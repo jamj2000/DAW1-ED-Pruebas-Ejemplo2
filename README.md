@@ -44,11 +44,11 @@ Dentro de **Ordenacion** tenemos 1 métodos estático:
 
 Este proyecto se ha desarrollado en Netbeans con el sistema de construcción **Ant**. 
 
-Asimismo, para poder realizar cobertura de código en Netbeans se ha instalado el plugin `TikiOne JaCoCoverage`.
+Opcionalmente, si lo deseas puedes instalar el plugin `TikiOne JaCoCoverage` en Netbeans para poder realizar cobertura de código desde el propio IDE. No obstante esto no es imprescindible puesto que más abajo se indica como realizarla con el servicio web de `codecov.io`.
 
-Para que la integración continua de Travis-CI no falle durante la realizacin de los tests con el sistema de construcción de **ant**, he creado una subcarpeta llamada `lib` y dentro he puesto los archivos [JUnit](https://github.com/junit-team/junit/releases/download/r4.12/junit-4.12.jar) y [Hamcrest](http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar).
+Para que la integración continua de Travis-CI no falle durante la realización de los tests con el sistema de construcción **ant**, he creado una subcarpeta llamada `lib` y dentro he puesto los archivos [JUnit](https://github.com/junit-team/junit/releases/download/r4.12/junit-4.12.jar) y [Hamcrest](http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar).
 
-Además he editado el archivo de construcción [**`build.xml`**](build.xml).
+Además he simplificado el archivo de construcción [**`build.xml`**](build.xml) para adaptarlo mejor a mis necesidades.
 
 
 ### Clases de prueba
