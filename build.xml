@@ -6,15 +6,16 @@
 	   Basado en: https://github.com/jacoco/jacoco/blob/master/org.jacoco.examples/build/build.xml
    </description>
 
-  <property name="build.dir"      value="build"/>
-  <property name="src.dir"        value="src"/>
-  <property name="test.dir"       value="test"/>
-  <property name="test.build.dir" value="${build.dir}/test"/>
-  <property name="jar.dir"        value="${build.dir}/jar"/>
-  <property name="reports.dir"    value="${build.dir}/reports" />
-  <property name="main-class"     value="Main"/>
-  <property name="jacoco.exec"    location="${reports.dir}/jacoco.exec" />
-
+  <property name="build.dir"         value="build"/>
+  <property name="src.dir"           value="src"/>
+  <property name="test.dir"          value="test"/>
+  <property name="test.build.dir"    value="${build.dir}/test"/>
+  <property name="jar.dir"           value="${build.dir}/jar"/>
+  <property name="reports.dir"       value="${build.dir}/reports" />
+  <property name="reports.junit.dir" value="${reports.dir}/junit" />
+  <property name="jacoco.exec"       location="${reports.dir}/jacoco.exec" />
+  <property name="main-class"        value="Main"/>
+	
   <!-- Importamos tareas de JaCoCo Ant -->
   <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
 		<classpath path="lib/jacocoant.jar" />
@@ -82,11 +83,18 @@
 				</sourcefiles>
 			</structure>
 
-			<!-- to produce reports in different formats. -->
+			<!-- para producir informes en distintos formatos. -->
 			<html destdir="${reports.dir}" />
 			<csv destfile="${reports.dir}/report.csv" />
-			<xml destfile="${reports.dir}/report.xml" />
+			<xml destfile="${reports.dir}/report.xml" />			
 		</jacoco:report>
+	  	
+        	<junitreport todir="${reports.junit.dir}">
+          		<fileset dir="${reports.junit.dir}">
+           			 <include name="TEST-*.xml"/>
+          		</fileset>
+         		<report format="frames" todir="${reports.junit.dir}/html"/>
+		</junitreport>
   </target>
   
   <!-- Creamos archivo .jar --> 
