@@ -46,6 +46,10 @@ Este proyecto se ha desarrollado en Netbeans con el sistema de construcción **A
 
 Asimismo, para poder realizar cobertura de código en Netbeans se ha instalado el plugin `TikiOne JaCoCoverage`.
 
+Para que la integración continua de Travis-CI no falle durante la realizacin de los tests con el sistema de construcción de **ant**, he creado una subcarpeta llamada `lib` y dentro he puesto los archivos [JUnit](https://github.com/junit-team/junit/releases/download/r4.12/junit-4.12.jar) y [Hamcrest](http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar).
+
+Además he editado el archivo de construcción [**`build.xml`**](build.xml).
+
 
 ### Clases de prueba
 
