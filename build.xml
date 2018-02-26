@@ -1,8 +1,9 @@
 <project name="junit-example">
   <property name="build.dir" value="build"/>
-  <property name="src.dir" value="src"/>
+  <property name="src.dir"   value="src"/>
+  <property name="test.dir"  value="test"/>
   <property name="test.build.dir" value="build/test"/>
-  <property name="test.src.dir" value="src/test"/>
+
 
   <path id="classpath.test">
     <pathelement location="lib/junit-4.12.jar"/>
@@ -17,7 +18,7 @@
 
   <target name="test-compile" depends="compile">
     <mkdir dir="${test.build.dir}"/>
-    <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false">
+    <javac srcdir="${test.dir}" destdir="${test.build.dir}" includeantruntime="false">
         <classpath refid="classpath.test"/>
     </javac>
   </target>
@@ -30,7 +31,7 @@
         </classpath>
         <formatter type="brief" usefile="false" />
         <batchtest>
-            <fileset dir="${test.src.dir}" includes="**/*Test.java" />
+            <fileset dir="${test.dir}" includes="**/*Test.java" />
         </batchtest>
     </junit>
   </target>
