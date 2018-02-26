@@ -25,6 +25,8 @@
   <path id="classpath.test">
     <pathelement location="lib/junit-4.12.jar"/>
     <pathelement location="lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="lib/jacocoant.jar"/>
+    <pathelement location="lib/jacocoagent.jar"/>
     <pathelement location="${build.dir}"/>
   </path>
 
@@ -33,6 +35,15 @@
     <delete dir="${build.dir}" />
   </target>
   
+  <!-- Creamos directorios y subdirectorios -->
+  <target name="init">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${test.build.dir}" />
+	<mkdir dir="${jar.dir}" />
+        <mkdir dir="${reports.dir}" />
+        <mkdir dir="${reports.junit.dir}" />
+  </target>
+	
   <!-- Compilamos --> 
   <target name="compile">
     <mkdir dir="${build.dir}"/>
@@ -112,6 +123,6 @@
   </target>
 
 
-	<target name="all" depends="clean,compile,test,report" />
+  <target name="all" depends="clean,init,compile,test,report" />
 
 </project>
