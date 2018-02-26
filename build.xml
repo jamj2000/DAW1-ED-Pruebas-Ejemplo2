@@ -1,18 +1,37 @@
-<project name="junit-example">
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="DAW1-ED-Pruebas-Ejemplo2"  default="all" xmlns:jacoco="antlib:org.jacoco.ant">
+
+   <description>
+	   Construcción Ant con informe de cobertura de JaCoCo.
+	   Basado en: https://github.com/jacoco/jacoco/blob/master/org.jacoco.examples/build/build.xml
+   </description>
+
   <property name="build.dir"      value="build"/>
   <property name="src.dir"        value="src"/>
   <property name="test.dir"       value="test"/>
   <property name="test.build.dir" value="${build.dir}/test"/>
   <property name="jar.dir"        value="${build.dir}/jar"/>
+  <property name="reports.dir"    value="${build.dir}/reports" />
   <property name="main-class"     value="Main"/>
+  <property name="jacoco.exec"    location="${reports.dir}/jacoco.exec" />
 
-  <!-- Directorios para librerias JUnit y Hamcrest -->
+  <!-- Importamos tareas de JaCoCo Ant -->
+  <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+		<classpath path="lib/jacocoant.jar" />
+  </taskdef>
+  
+  <!-- Directorios para librerias, JUnit y Hamcrest -->
   <path id="classpath.test">
     <pathelement location="lib/junit-4.12.jar"/>
     <pathelement location="lib/hamcrest-core-1.3.jar"/>
     <pathelement location="${build.dir}"/>
   </path>
 
+  <!-- Borramos archivos generados --> 
+  <target name="clean">
+    <delete dir="${build.dir}" />
+  </target>
+  
   <!-- Compilamos --> 
   <target name="compile">
     <mkdir dir="${build.dir}"/>
@@ -28,37 +47,63 @@
 
   <!-- Ejecutamos las pruebas de unidad -->
   <target name="test" depends="test-compile">
-    <junit printsummary="on" haltonfailure="yes" fork="true">
-        <classpath>
-          <path refid="classpath.test"/>
-          <pathelement location="${test.build.dir}"/>
-        </classpath>
-        <formatter type="brief" usefile="false" />
-        <batchtest>
-            <fileset dir="${test.dir}" includes="**/*Test.java" />
-        </batchtest>
-    </junit>
+    <!-- Envolvemos las pruebas dentro de jacoco:coverage --> 
+    <jacoco:coverage destfile="${jacoco.exec}">
+        <junit printsummary="on" haltonfailure="yes" fork="true">
+            <classpath>
+                <path refid="classpath.test"/>
+                <pathelement location="${test.build.dir}"/>
+            </classpath>
+            <formatter type="brief" usefile="false" />
+            <batchtest>
+                 <fileset dir="${test.dir}" includes="**/*Test.java" />
+            </batchtest>
+        </junit>
+    </jacoco:coverage>
   </target>
   
-    <!-- Creamos archivo .jar --> 
-    <target name="jar" depends="compile">
-      <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${build.dir}">
-        <manifest>
-          <attribute name="Main-Class" value="${main-class}"/>
-        </manifest>
-      </jar>
-    </target>
+  <!-- Generamos informe de cobertura -->
+  <target name="report" depends="test">
 
+		<jacoco:report>
 
-    <!-- Ejecutamos --> 
-    <target name="run" depends="jar">
-      <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
-    </target>
+			<!-- Esta tarea necesita los datos de ejecución recabados y ... -->
+			<executiondata>
+				<file file="${jacoco.exec}" />
+			</executiondata>
 
+			<!-- los archivos class y archivos fuente opcionales ... -->
+			<structure name="Ejemplo JaCoCo para Ant">
+				<classfiles>
+					<fileset dir="${build.dir}" />
+				</classfiles>
+				<sourcefiles encoding="UTF-8">
+					<fileset dir="${src.dir}" />
+				</sourcefiles>
+			</structure>
 
-    <!-- Borramos archivos generados --> 
-    <target name="clean">
-      <delete dir="build" />
-    </target>
+			<!-- to produce reports in different formats. -->
+			<html destdir="${reports.dir}" />
+			<csv destfile="${reports.dir}/report.csv" />
+			<xml destfile="${reports.dir}/report.xml" />
+		</jacoco:report>
+  </target>
   
+  <!-- Creamos archivo .jar --> 
+  <target name="jar" depends="compile">
+    <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${build.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="${main-class}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- Ejecutamos --> 
+  <target name="run" depends="jar">
+    <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+  </target>
+
+
+	<target name="all" depends="clean,compile,test,report" />
+
 </project>
