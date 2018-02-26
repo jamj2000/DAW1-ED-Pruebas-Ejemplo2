@@ -13,7 +13,7 @@
   <property name="jar.dir"           value="${build.dir}/jar"/>
   <property name="reports.dir"       value="${build.dir}/reports" />
   <property name="reports.junit.dir" value="${reports.dir}/junit" />
-  <property name="jacoco.exec"       location="${reports.dir}/jacoco.exec" />
+  <property name="jacoco.exec"       value="${build.dir}/jacoco.exec" />
   <property name="main-class"        value="Main"/>
 	
   <!-- Importamos tareas de JaCoCo Ant -->
