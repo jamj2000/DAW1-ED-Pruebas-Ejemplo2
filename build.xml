@@ -21,12 +21,7 @@
 	<classpath path="lib/jacocoant.jar" />
   </taskdef>
   
-  <!-- Importamos tareas de JaCoCo Ant -->
-  <taskdef resource="net/sf/antcontrib/antlib.xml">
-    <classpath>
-      <pathelement location="lib/ant-contrib-1.0b3.jar"/>
-    </classpath>
-  </taskdef>
+
 	
   <!-- Directorios para librerias, JUnit y Hamcrest -->
   <path id="classpath.test">
