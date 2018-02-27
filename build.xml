@@ -68,10 +68,8 @@
                 <pathelement location="${test.build.dir}"/>
             </classpath>
             <formatter type="xml" />
-            <batchtest  fork="true" todir="${reports.junit.dir}">
-              <fileset dir="${test.dir}">
-                <include name="**/*Test.java" />
-              </fileset>
+            <batchtest>
+                 <fileset dir="${test.dir}" includes="**/*Test.java" />
             </batchtest>
 	<!--
             <formatter type="brief" usefile="false" />
