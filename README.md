@@ -76,8 +76,7 @@ Es importante tener un archivo **`.travis.yml`** adecuado. Aquí tienes el utili
 
 Para realizar un análisis de la calidad del código (bugs, vulnerabilidades, *code smells* y demás) nos hemos registrado con nuestra cuenta de GitHub en https://sonarcloud.io, hemos generado un *token* y hemos añadido este proyecto. 
 
-
-![Análisis de calidad del código](img/sonarqube-sonarcloud.png)
+Sin embargo, sonarcloud.io sólo soporta proyectos Java en Maven y Gradle, no Ant.
 
 
 
