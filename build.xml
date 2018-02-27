@@ -67,6 +67,7 @@
                 <path refid="classpath.test"/>
                 <pathelement location="${test.build.dir}"/>
             </classpath>
+	    <formatter type="brief" usefile="false" />
             <formatter type="xml" />
             <batchtest fork="true">
                  <fileset dir="${test.dir}" includes="**/*Test.java" />
