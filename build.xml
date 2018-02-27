@@ -61,17 +61,26 @@
 
   <!-- Ejecutamos las pruebas de unidad -->
   <target name="test" depends="test-compile">
-
+     <jacoco:coverage destfile="${jacoco.exec}">
         <junit printsummary="on" haltonfailure="yes" fork="true">
             <classpath>
                 <path refid="classpath.test"/>
                 <pathelement location="${test.build.dir}"/>
             </classpath>
+            <formatter type="xml" />
+            <batchtest  fork="true" todir="${reports.junit.dir}">
+              <fileset dir="${test.dir}">
+                <include name="**/*Test.java" />
+              </fileset>
+            </batchtest>
+	<!--
             <formatter type="brief" usefile="false" />
             <batchtest>
                  <fileset dir="${test.dir}" includes="**/*Test.java" />
             </batchtest>
+        -->
         </junit>
+     </jacoco:coverage>
 
   </target>
   
