@@ -61,9 +61,7 @@
 
   <!-- Ejecutamos las pruebas de unidad -->
   <target name="test" depends="test-compile">
-    <!-- Envolvemos las pruebas dentro de jacoco:coverage --> 
-    <jacoco:coverage destfile="${jacoco.exec}">
-    </jacoco:coverage>
+
         <junit printsummary="on" haltonfailure="yes" fork="true">
             <classpath>
                 <path refid="classpath.test"/>
