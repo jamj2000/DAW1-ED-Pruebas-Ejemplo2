@@ -68,15 +68,10 @@
                 <pathelement location="${test.build.dir}"/>
             </classpath>
             <formatter type="xml" />
-            <batchtest>
+            <batchtest fork="true">
                  <fileset dir="${test.dir}" includes="**/*Test.java" />
             </batchtest>
-	<!--
-            <formatter type="brief" usefile="false" />
-            <batchtest>
-                 <fileset dir="${test.dir}" includes="**/*Test.java" />
-            </batchtest>
-        -->
+
         </junit>
      </jacoco:coverage>
 
