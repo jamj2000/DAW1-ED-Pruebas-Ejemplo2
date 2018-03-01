@@ -24,6 +24,7 @@
 	<property name="sonar.projectName" value="Ejemplo2 (SonarQube para Ant)" />
 	<property name="sonar.projectVersion" value="1.0" />
 	<property name="sonar.language" value="java" />
+	<property name="sonar.java.source" value="1.8" />
 	<property name="sonar.sources" value="." />
 	<property name="sonar.binaries" value="${build.dir}" />
 	<property name="sonar.sourceEncoding" value="UTF-8" />	
