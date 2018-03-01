@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/jamj2000/DAW1-ED-Pruebas-Ejemplo2.svg?branch=master)](https://travis-ci.org/jamj2000/DAW1-ED-Pruebas-Ejemplo2)
 [![codecov](https://codecov.io/gh/jamj2000/DAW1-ED-Pruebas-Ejemplo2/branch/master/graph/badge.svg)](https://codecov.io/gh/jamj2000/DAW1-ED-Pruebas-Ejemplo2)
-[![Sonar](https://sonarcloud.io/api/project_badges/measure?project=miapp&metric=alert_status)](https://sonarcloud.io/organizations/jamj2000-github/projects)
+[![Sonar](https://sonarcloud.io/api/project_badges/measure?project=ejemplo2&metric=alert_status)](https://sonarcloud.io/organizations/jamj2000-github/projects)
 
 
 ![JDK 8](https://img.shields.io/badge/JDK-8-blue.svg)
