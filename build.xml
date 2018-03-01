@@ -9,6 +9,7 @@
   <property name="build.dir"         value="build"/>
   <property name="src.dir"           value="src"/>
   <property name="test.dir"          value="test"/>
+  <property name="classes.dir"       value="${build.dir}/classes" />
   <property name="test.build.dir"    value="${build.dir}/test"/>
   <property name="jar.dir"           value="${build.dir}/jar"/>
   <property name="reports.dir"       value="${build.dir}/reports" />
@@ -62,6 +63,7 @@
   <!-- Creamos directorios y subdirectorios -->
   <target name="init">
         <mkdir dir="${build.dir}" />
+	<mkdir dir="${classes.dir}" />
         <mkdir dir="${test.build.dir}" />
 	<mkdir dir="${jar.dir}" />
         <mkdir dir="${reports.dir}" />
@@ -70,12 +72,10 @@
 	
   <!-- Compilamos --> 
   <target name="compile" depends="init">
-    <mkdir dir="${build.dir}"/>
-    <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false"/>
+    <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
   </target>
 
   <target name="test-compile" depends="compile">
-    <mkdir dir="${test.build.dir}"/>
     <javac srcdir="${test.dir}" destdir="${test.build.dir}" includeantruntime="false">
         <classpath refid="classpath.test"/>
     </javac>
@@ -131,7 +131,7 @@
   
   <!-- Creamos archivo .jar --> 
   <target name="jar" depends="compile">
-  	<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${build.dir}">
+  	<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
 		<manifest>
   			<attribute name="Main-Class" value="${main-class}"/>
   		</manifest>
