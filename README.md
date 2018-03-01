@@ -8,7 +8,7 @@
 
 
 ![JDK 8](https://img.shields.io/badge/JDK-8-blue.svg)
-![Gradle](https://img.shields.io/badge/ant-2-blue.svg)
+![Ant](https://img.shields.io/badge/ant-1.9-blue.svg)
 ![JUnit 4](https://img.shields.io/badge/JUnit-4-blue.svg)
 
 [![GitHub issues](https://img.shields.io/github/issues/jamj2000/DAW1-ED-Pruebas-Ejemplo2.svg)](https://github.com/jamj2000/DAW1-ED-Pruebas-Ejemplo2/issues) 
