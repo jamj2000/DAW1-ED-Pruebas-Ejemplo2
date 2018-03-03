@@ -18,17 +18,17 @@
   <property name="main-class"        value="Main"/>
 
 	<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
-	<property name="sonar.host.url" value="https://sonarcloud.io" />
+	<property name="sonar.host.url" value="http://localhost:9000" />
 
 	<!-- Define the Sonar properties -->
-	<property name="sonar.organization" value="jamj2000-github" /> 
+	<!-- property name="sonar.organization" value="jamj2000-github" /  --> 
 	<property name="sonar.projectKey" value="ejemplo2" />
 	<property name="sonar.projectName" value="Ejemplo2 (SonarQube para Ant)" />
 	<property name="sonar.projectVersion" value="1.0" />
 	<property name="sonar.language" value="java" />
 	<property name="sonar.java.source" value="1.8" />
 	<property name="sonar.java.binaries" value="${build.dir}" />
-	<property name="sonar.sources" value="." />
+	<property name="sonar.sources" value="src" />
 	<property name="sonar.binaries" value="${build.dir}" />
 	<property name="sonar.sourceEncoding" value="UTF-8" />	
 	
@@ -38,7 +38,7 @@
 	<classpath path="lib/jacocoant.jar" />
   </taskdef>
   
-  <target name="sonar" depends="compile">
+  <target name="sonar" depends="test">
 	<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
 		<classpath path="lib/sonarqube-ant-task-2.5.jar" />
 	</taskdef>
